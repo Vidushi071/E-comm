@@ -54,3 +54,12 @@ Product.insertMany(products)
 .then(() =>{
     console.log('Product seeded');
 })
+
+// this will delete every product and then will insert the products
+// async function seedDB(){
+//     await Product.deleteMany({})
+//     await Product.insertMany(products);
+//     console.log('Product seeded');
+// }
+
+// seedDB()

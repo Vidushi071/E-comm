@@ -24,12 +24,15 @@ router.post("/products", async(req,res)=>{
 
  })
 
- router.get('/products/:id', async(req,res)=>{
+ 
+router.get('/products/:id', async (req, res) => {
 
-    const{id} = req.params;
-    const product = await Product.findById(id);
-    res.render('products/show', {product})
- })
+    const { id } = req.params;
+
+    const product = await Product.findById(id).populate('reviews');
+
+    res.render('products/show', { product });
+});
 
  router.get('/products/:id/edit',async(req,res)=>{
      const { id} = req.params;
