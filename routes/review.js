@@ -2,10 +2,12 @@ const express= require('express')
 const router = express.Router();
 const Product = require('../models/product')
 const Review = require('../models/review')
+const {validateReview} = require('../middleware')
 
-router.post('/products/:productid/review', async(req, res) => {
+router.post('/products/:productid/review',validateReview,async(req, res) => {
 
-    const { productid } = req.params;
+    try{
+        const { productid } = req.params;
     const { rating, comment } = req.body;
 
     const product = await Product.findById(productid);
@@ -18,6 +20,12 @@ router.post('/products/:productid/review', async(req, res) => {
     await product.save();
 
     res.redirect(`/products/${productid}`);
+    }
+    catch(err){
+        res.status(500).render('error',{err:err.message})
+    }
+
+    
 });
 
 

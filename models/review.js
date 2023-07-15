@@ -1,6 +1,6 @@
 const mongoose= require('mongoose')
 
-const ReviewSchema= new mongoose.Schema({
+const reviewSchema= new mongoose.Schema({
 
     rating:{
         type:Number,
@@ -14,6 +14,6 @@ const ReviewSchema= new mongoose.Schema({
     } 
 },{timestamps:true})
 
-const Review= mongoose.model('Review',ReviewSchema)
+const Review= mongoose.model('Review',reviewSchema)
 
 module.exports= Review;

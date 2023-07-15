@@ -42,3 +42,12 @@ nav {
   .bg{
     background-color: rgba(249, 150, 51, 0.708);
   }
+  .productCard{
+    width: 18rem;
+  }
+  .productCard:hover{
+    
+      transform: scale(1.05);
+    }
+  
+  
