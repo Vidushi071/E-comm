@@ -14,11 +14,16 @@ router.post('/products/:productid/review',validateReview,async(req, res) => {
 
     const review = new Review({ rating, comment });
 
+    
+        // Average Rating Logic
+    const newAverageRating = ((product.avgRating * product.reviews.length) + parseInt(rating)) / (product.reviews.length + 1);
+    product.avgRating = parseFloat(newAverageRating.toFixed(1));
     product.reviews.push(review);
 
     await review.save();
     await product.save();
 
+    req.flash('success','Added your review successfully!')
     res.redirect(`/products/${productid}`);
     }
     catch(err){

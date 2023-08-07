@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
             <img src="https://plus.unsplash.com/premium_photo-1669075651558-ed2834e63f96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fFZ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=600&q=60" alt="" style="width:80px;height:70px;border-radius: 50%;">
         </div>
         <div class="navItem">
-            <h1 style="font-size:3rem; font-weight: 800;">E-Commerce Website</h1>
+            <h1 style="font-size:3rem; font-weight: 800;margin-left: 100px;">Haze Brand </h1>
         </div>
         <div class="navItem">
             <div class="search">
@@ -27,13 +27,67 @@
         <div class="navItem">  </div>
         <h3 class="menuItem">Products</h3>
         <h3 class="menuItem">About Us</h3>
-        <h3 class="menuItem">Contact </h3>
-        <!-- <h3 class="menuItem">CRATER</h3>
-        <h3 class="menuItem">HIPPIE</h3> -->
+        <h3 class="menuItem">Contact US </h3>
+        <h3 class="menuItem">Categories </h3>
+        <h3 class="menuItem">Shop Now </h3>
+       
         <div class="navItem">  </div>
     </div>
 </nav>
-    
-    
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/app.css">
+</head>
+
+<body class="d-flex text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div class="bg">
+                <h3 class="float-md-left mb-0">Haze Cart</h3>
+                <nav class="nav nav-masthead justify-content-center float-md-right">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="/products">Products</a>
+                    <% if(!currentUser) { %>
+                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link" href="/register">Register</a>
+                    <% } else { %>
+                    <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+                </nav>
+            </div>
+        </header>
+        <main class="px-3">
+            <h1>Haze Cart</h1>
+            <p class="lead"> Welcome to Haze Cart! <br> Jump right in and explore our many products. <br>
+                Feel free to add some of your own and comment on others!</p>
+            <a href="/products" class="btn btn-sm btn-secondary font-weight-bold border-white bg-white ">View
+                Products</a>
+        </main>
+
+        <footer class="mt-auto text-white-50">
+            <p>All Right Reserved &copy; 2023 </p>
+        </footer>
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
 </body>
 </html>

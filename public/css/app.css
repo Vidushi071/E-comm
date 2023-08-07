@@ -1,18 +1,22 @@
+*{
+  margin: 0;
+}
 main{
     margin-top: 2.5rem;
 }
 
-nav {
+ nav {
     background-color: #111;
     color: white;
     padding: 10px 20px;
+    position: fixed;
   }
   
   
   .navTop {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content:space-between;
   }
   
   .search {
@@ -36,9 +40,11 @@ nav {
   .navBottom {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
+    /* justify-content: center; */
     gap:1rem;
-  }
+   } 
+
   .bg{
     background-color: rgba(249, 150, 51, 0.708);
   }
@@ -49,5 +55,19 @@ nav {
     
       transform: scale(1.05);
     }
-  
-  
+    .btn:focus {
+      outline: none;
+      box-shadow: none;
+  }
+  .show-btn{
+    background-color:#b07f29cc;
+    color:black;
+    width: 50%;
+    margin: 0 25%;
+    margin-top: 10px;
+}
+
+.show-btn:hover{
+    color: white;
+}
+ 
