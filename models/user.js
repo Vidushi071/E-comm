@@ -8,7 +8,23 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true
-    }
+    },
+    role:{
+        type:String,
+        default:'buyer'
+    },
+    cart: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:'Product'
+        }
+    ],
+    wishList: [
+        {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Product"
+        }
+    ]
 });
 
 userSchema.plugin(passportLocalMongoose);

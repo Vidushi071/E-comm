@@ -5,7 +5,11 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="/products" style="color: white;">Haze brand</a>
+        <div class="navbar-nav"style="text-align: center;">
+          <a href="/products"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6NgFpwypVQr3wYLXhTw75eHCuCre0SEzEvQ&usqp=CAU" alt=".." style="width: 60px;height: 60px;border-radius: 50%;"></a>
+          <a class="navbar-brand " href="/products" style="color: white;margin-top: 2px;margin-left:5px ;">Haze brand</a>
+        </div>
+
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/products" style="color: white;">Home</a>
@@ -13,9 +17,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#" style="color: white;">About</a>
           </li>
+          <% if(currentUser && currentUser.role === 'seller'){ %>
           <li class="nav-item">
             <a class="nav-link" href="/products/new"  style="color: white;">New</a>
           </li>
+          <% } %>
         </ul>
         <!-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -26,8 +32,9 @@
           <%if(!currentUser){%>
             <a href="/login" class="nav-link" style="color: white;">Login</a>
           <%}else{%>
-            <a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> 
-              <sup><span class="badge bg-danger">2</span></sup> 
+            <a href="#" class="nav-link text-capitalize" style="color: white;">Hello <%= currentUser.username %></a>
+            <a href="/user/cart" class="nav-link"><i class="fas fa-shopping-cart"></i> 
+              <sup><span class="badge bg-danger"><%=currentUser.cart.length%></span></sup> 
             </a>
             <a href="/logout" class="nav-link" style="color: white;">Logout</a>
           <%}%>

@@ -1,7 +1,8 @@
 <% layout('layouts/boilerplate') -%>
 <%- include('../partials/flash')  %>
-<%- include('../partials/carousel') %>
-<section class="container">
+<!-- <%- include('../partials/carousel') %> -->
+<section class="mx-auto"  style="width:90%;">
+
   <div class="row">
     <% for(let product of products) {%>
     <div class="col-lg-3 col-3 mt-3 mb-3 mx-auto" style="width: 18rem;padding:0;">
@@ -9,7 +10,17 @@
             <img style="height: 300px;" src= <%= product.img %>" class="card-img-top" alt="..." >
             <span class="badge rounded-pill bg-light text-dark w-25 position-absolute translate-middle-y" style="top:52%;left:5%"><%=product.avgRating%>  &star; | <%=product.reviews.length%></span>
             <div class="card-body">
-              <h5 class="card-title d-flex justify-content-between align-items-center"><span><%= product.name %></span> <a href="#" class="btn"><span><i class="far fa-heart"></i></span></a></h5>
+              <h5 class="card-title d-flex justify-content-between align-items-center">
+                <span><%= product.name %></span>
+                <span class="btn like-button bg-light rounded-circle" product-id="<%=product._id%>">
+                  <% if(currentUser && currentUser.wishList.includes(product._id)){ %> 
+                      <i class="fas fa-heart"></i>
+                  <% }else {%>
+                      <i class="far fa-heart"></i>
+                  <% } %>  
+                </span>
+                 <!-- <span class="btn like-button" product-id="<%=product._id %>"><i class="far fa-heart"></i></span> -->
+              </h5>
             <p class="card-text fw-light"><%= product.desc%></p>
             <% if(product.reviews.length){ %>
               <p class="text-muted"><%=product.reviews.length%> reviews</p>
@@ -26,5 +37,4 @@
 </div>
 </section>
 
-
-<%- include('../partials/footer') %>
+<script src="/js/common.js"></script>

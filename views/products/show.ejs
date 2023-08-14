@@ -5,24 +5,30 @@
 <div class="row">
  
     <div class="col-lg-6">
-        <div class="card text-center shadow lg p-2 mx-auto" style="width: 22rem;">
+        <div class="card text-center shadow lg p-2 mx-auto" style="width: 23rem;">
             <img style="height: 320px;" src= <%= product.img %>" class="card-img-top" alt="..." >
             <div class="card-body">
               <h5 class="card-title"><%= product.name%></h5>
               <h5 class="card-title">$ <%= product.price%></h5>
               <p class="card-text"><%= product.desc %></p>
               <a href="#" class="btn btn-primary">Buy</a>
-              <a href="#" class="btn btn-success btn-primary">Add To Cart</a>
+              
+              <form class="d-inline-block" action="/user/<%=product._id%>/add" method="post">
+                <button type="submit" class="btn btn-secondary btn-sm">Add To Cart</button>
+            </form>
+
+              <% if(currentUser && currentUser.role === 'seller'){ %>
               <a href="/products/<%= product._id %>/edit" class="btn btn-secondary btn-primary">Edit</a>
               <form action="/products/<%=product._id%>?_method=DELETE" method="post" class="d-inline">
                 <button class="btn  btn-danger">Delete</button>
              </form>
+             <% } %>
             </div>
           </div>
     </div>
     <div class="col-lg-6">
         <h1 class="display-5 text-center">Leave Your Review</h1>
-        <form action="/products/<%= product._id %>/review" method="post">
+        <form action="/products/<%= product._id %>/review" method="post" class="needs-validation" novalidate>
           
           <div style="margin-left: 35%;margin-top: 10px;" >
             <fieldset class="starability-basic">
@@ -41,14 +47,14 @@
             </fieldset>
           </div> 
           <div class="mb-3">
-            <label class="form-label" for="desc" style="font-size: larger;">Review</label>
-            <textarea class="form-control" name="comment" id="desc" rows="3"></textarea>
+            <label class="form-label" for="desc" style="font-size: larger;">Add Review</label>
+            <textarea class="form-control" name="comment" id="desc" rows="3" style="width: 85%;" required></textarea>
         </div> 
           <button class="btn btn-success" >Submit</button>
           </form> 
           <div class="my-3">
             <%for(let review of product.reviews){%>
-              <div class="card mb-3">
+              <div class="card mb-3" style="width: 90%;">
                 <div class="card-body">
                   <p class="starability-result" data-rating="<%=review.rating%>">
                     Rated: <%=review.rating%> stars

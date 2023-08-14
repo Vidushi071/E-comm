@@ -75,6 +75,15 @@ main{
   height: 300px;
   padding: 10px;
 }
+.navbar-brand{
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+  text-shadow: 3px 3px 3px #ababab;
+}
+.nav-link{
+  text-shadow: 3px 3px 3px #ababab;
+}
+
 
 @media (min-width: 768px) {
   .productCard:hover {

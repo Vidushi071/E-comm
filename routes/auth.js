@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
 const passport = require('passport');
+const { isLoggedIn } = require('../middleware');
 
 
 // router.get('/fakeuser', async(req, res) => {
@@ -24,9 +25,10 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     
+
     try {
-        const { username, password, email } = req.body;
-        const user = new User({ username, email });
+        const { username, password, email,role } = req.body;
+        const user = new User({ username, email,role });
         const newUser = await User.register(user, password);
 
         req.login(newUser, function(err) {
@@ -50,17 +52,16 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
-router.post('/login',
-  passport.authenticate('local', { 
-        failureRedirect: '/login',
-        failureFlash: true
-  }), (req, res) => {
+router.post('/login', passport.authenticate('local', {
+    failureRedirect: '/login',
+    failureFlash: true
+}), (req, res) => {
+    req.flash('success', `Welcome Back ${req.user.username} Again!!`);
 
-    //   console.log(req.user);
-
-      req.flash('success', `Welcome Back  ${req.user.username} Again!!`);
-      console.log('Logged In Succcessfully!');
-      res.redirect('/products');
+    let redirectUrl = req.session.returnUrl || '/products';
+    // console.log(req.session);
+    delete req.session.returnUrl;
+    res.redirect(redirectUrl);
 });
 
 
@@ -71,6 +72,9 @@ router.get('/logout', function(req, res, next){
       res.redirect('/products');
     });
   });
- 
-  
+
+
+
+
+
 module.exports = router;

@@ -10,6 +10,19 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 
+// Routes
+const productRoutes = require('./routes/product');
+const reviewRoutes = require('./routes/review');
+const authRoutes = require('./routes/auth');
+const cartRoutes = require('./routes/cart')
+
+// APIs
+const productApi = require('./routes/api/productapi')
+
+
+
+
+
 mongoose.connect('mongodb://localhost:27017/E-comm')
     .then(() => console.log('DB Connected'))
     .catch((err) => console.log(err));
@@ -58,15 +71,19 @@ app.use((req, res, next) => {
 
 
 
-// Routes
-const productRoutes = require('./routes/product');
-const reviewRoutes = require('./routes/review');
-const authRoutes = require('./routes/auth');
+
+
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 
 
 app.use(productRoutes);
 app.use(reviewRoutes);
 app.use(authRoutes);
+app.use(productApi)
+app.use(cartRoutes);
 
 
 const port = 5000;
