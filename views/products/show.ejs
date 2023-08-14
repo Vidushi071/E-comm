@@ -14,7 +14,7 @@
               <a href="#" class="btn btn-primary">Buy</a>
               
               <form class="d-inline-block" action="/user/<%=product._id%>/add" method="post">
-                <button type="submit" class="btn btn-secondary btn-sm">Add To Cart</button>
+                <button type="submit" class="btn btn-secondary btn">Add To Cart</button>
             </form>
 
               <% if(currentUser && currentUser.role === 'seller'){ %>

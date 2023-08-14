@@ -32,7 +32,7 @@
           <%if(!currentUser){%>
             <a href="/login" class="nav-link" style="color: white;">Login</a>
           <%}else{%>
-            <a href="#" class="nav-link text-capitalize" style="color: white;">Hello <%= currentUser.username %></a>
+            <a href="/user/profile" class="nav-link text-capitalize" style="color: white;">Hello <%= currentUser.username %></a>
             <a href="/user/cart" class="nav-link"><i class="fas fa-shopping-cart"></i> 
               <sup><span class="badge bg-danger"><%=currentUser.cart.length%></span></sup> 
             </a>

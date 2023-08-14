@@ -15,6 +15,7 @@ const productRoutes = require('./routes/product');
 const reviewRoutes = require('./routes/review');
 const authRoutes = require('./routes/auth');
 const cartRoutes = require('./routes/cart')
+const profileRoutes = require('./routes/profile')
 
 // APIs
 const productApi = require('./routes/api/productapi')
@@ -84,6 +85,7 @@ app.use(reviewRoutes);
 app.use(authRoutes);
 app.use(productApi)
 app.use(cartRoutes);
+app.use(profileRoutes);
 
 
 const port = 5000;
