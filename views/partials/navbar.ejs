@@ -30,13 +30,19 @@
         <div class="navbar-nav ml-auto">
 
           <%if(!currentUser){%>
-            <a href="/login" class="nav-link" style="color: white;">Login</a>
+            <!-- <a href="/login" class="nav-link" style="color: white;">Login</a> -->
+            <a class="nav-link" href="/login" style="color: white;">
+              <i class="fas fa-sign-in-alt p-1" ></i>Login
+          </a>
           <%}else{%>
             <a href="/user/profile" class="nav-link text-capitalize" style="color: white;">Hello <%= currentUser.username %></a>
             <a href="/user/cart" class="nav-link"><i class="fas fa-shopping-cart"></i> 
               <sup><span class="badge bg-danger"><%=currentUser.cart.length%></span></sup> 
             </a>
-            <a href="/logout" class="nav-link" style="color: white;">Logout</a>
+            <!-- <a href="/logout" class="nav-link" style="color: white;">Logout</a> -->
+            <a class="nav-link" href="/logout" style="color: white;">
+              <i class="fas fa-sign-out-alt p-1"></i>Logout
+          </a>
           <%}%>
       </div>
       </div>
