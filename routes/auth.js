@@ -56,7 +56,7 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
 }), (req, res) => {
-    req.flash('success', `Welcome Back ${req.user.username} Again!!`);
+    req.flash('success', `Welcome Back ${req.user.username}!!`);
 
     let redirectUrl = req.session.returnUrl || '/products';
     // console.log(req.session);

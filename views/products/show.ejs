@@ -9,7 +9,7 @@
             <img style="height: 320px;" src= <%= product.img %>" class="card-img-top" alt="..." >
             <div class="card-body">
               <h5 class="card-title"><%= product.name%></h5>
-              <h5 class="card-title">$ <%= product.price%></h5>
+              <h5 class="card-title">&#8377; <%= product.price%></h5>
               <p class="card-text"><%= product.desc %></p>
               <a href="#" class="btn btn-primary">Buy</a>
               
@@ -65,9 +65,9 @@
                       <p class="text-muted"><%= review.createdAt.toDateString()%></p>
                       <% } %>
                   <!-- <a href="#" class="btn btn-danger btn-sm">Delete</a> -->
-                  <!-- <form action="/products/<%= product._id %>/<%=review._id%>?_method=DELETE" method="post" class="d-inline">
-                    <button class="btn  btn-danger">Delete</button>
-                 </form> -->
+                  <form action="/product/<%= product._id %>/review/<%= review._id %>?_method=DELETE" method="post" class="d-inline">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
                 </div>
               </div>
             <%}%>

@@ -30,7 +30,22 @@ router.post('/user/:productid/add',isLoggedIn, async(req, res) => {
     res.redirect('/user/cart');
 })
 
+router.delete('/user/cart/:id', isLoggedIn, async (req, res) => {
+    const productId = req.params.id; // Get the productId from the route parameter
 
+    try {
+        // Find the user by ID
+        const user = await User.findById(req.user._id); // Assuming req.user holds the authenticated user's information
+        // Remove the product ID from the cart array
+        user.cart.pull(productId);
+
+        // Save the updated user
+        await user.save();
+        res.redirect('/user/cart');
+    } catch (e) {
+        res.status(500).render('error', { err: e.message });
+    }
+});
 
 
 

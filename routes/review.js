@@ -34,7 +34,25 @@ router.post('/products/:productid/review',isLoggedIn,validateReview,async(req, r
 });
 
 
+router.delete('/product/:productId/review/:reviewId', isLoggedIn, async (req, res) => {
+    const productId = req.params.productId; // Get the product ID from the route parameter
+    const reviewId = req.params.reviewId; // Get the review ID from the route parameter
 
+    try {
+        // Find the product by ID
+        const product = await Product.findById(productId);
+
+
+        // Remove the review ID from the reviews array
+        product.reviews.pull(reviewId);
+
+        // Save the updated product
+        await product.save();
+        res.redirect(`/products/${productId}`);
+    } catch (e) {
+        res.status(500).render('error', { err: e.message });
+    }
+});
 
 
 
